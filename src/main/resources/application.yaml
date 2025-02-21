@@ -1,0 +1,43 @@
+spring:
+  batch:
+    job:
+      name: ${job.name:NONE}
+    jdbc:
+      initialize-schema: always
+  application:
+    name: batch-example
+  jpa:
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: create
+
+datasources:
+  batch:
+    datasource:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3308/batch
+        username: root
+        password: password
+        driver-class-name: com.mysql.cj.jdbc.Driver
+  joy:
+    datasource:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3308/joy
+        username: root
+        password: password
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8080
+logging:
+  level:
+    root: INFO
+
+slack:
+  webhook:
+    url: https://hooks.slack.com/services/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
